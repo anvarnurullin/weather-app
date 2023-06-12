@@ -1,0 +1,37 @@
+<div class="app">
+  <div class="search">
+    <input
+      [(ngModel)]="location"
+      (keyup.enter)="searchLocation()"
+      placeholder="Enter location"
+      type="text"
+    />
+  </div>
+  <div class="container">
+    <div class="top">
+      <div class="location">
+        <p>{{ data?.name }}</p>
+      </div>
+      <div class="temp">
+        <h1 *ngIf="data?.main">{{ data.main.temp }}°C</h1>
+      </div>
+      <div class="description">
+        <p *ngIf="data?.weather">{{ data.weather[0].main }}</p>
+      </div>
+    </div>
+    <div class="bottom" *ngIf="data?.name">
+      <div class="feels">
+        <p *ngIf="data?.main" class="bold">{{ data.main.feels_like }}°C</p>
+        <p>Feels like</p>
+      </div>
+      <div class="humidity">
+        <p *ngIf="data?.main" class="bold">{{ data.main.humidity }}%</p>
+        <p>Humidity</p>
+      </div>
+      <div class="wind">
+        <p *ngIf="data?.wind" class="bold">{{ data.wind.speed }} KPH</p>
+        <p>Wind Speed</p>
+      </div>
+    </div>
+  </div>
+</div>
